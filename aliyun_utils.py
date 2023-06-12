@@ -1,5 +1,0 @@
-ACCESS_AKID = "your akid"
-ACCESS_AKKEY = "your akkey"
-ACCESS_TOKEN = "your token"
-ACCESS_APPKEY = "your appkey"
-URL = "wss://nls-gateway.cn-shanghai.aliyuncs.com/ws/v1"
