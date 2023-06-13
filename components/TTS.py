@@ -11,11 +11,16 @@ class Tts:
         self.__th = threading.Thread(target=self.run)
         self.__id = tid
         self.__file = file
+        self.flag = False
 
     def start(self, text):
         self.__text = text
         self.__f = open(self.__file, "wb")
         self.__th.start()
+
+    def wait(self):
+        while (self.flag == False):
+            pass
 
     def on_metainfo(self, message, *args):
         # print("on_metainfo message=>{}".format(message))
@@ -40,6 +45,7 @@ class Tts:
 
     def on_completed(self, message, *args):
         print("on_completed:args=>{} message=>{}".format(args, message))
+        self.flag = True
 
     def run(self):
         print("thread:{} start..".format(self.__id))

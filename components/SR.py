@@ -22,6 +22,10 @@ class Sr:
         self.loadfile(self.__file)
         self.__th.start()
 
+    def wait(self):
+        while(self.flag == False):
+            pass
+
     def _on_start(self, message, *args):
         # print("_on_start:{}".format(message))
         pass
