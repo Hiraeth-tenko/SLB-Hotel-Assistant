@@ -11,7 +11,8 @@ class Sr:
         self.__th = threading.Thread(target=self.run)
         self.__id = tid
         self.__file = file
-        self.__flag = False
+        self.flag = False
+        self.msg = ""
 
     def loadfile(self, filename):
         with open(filename, "rb") as f:
@@ -42,7 +43,8 @@ class Sr:
         print("on_completed:args=>{} message=>".format(args))
         self.msg = json.loads(message)
         print("payload:\n", self.msg['payload'])
-        self.__flag = True
+        self.flag = True
+        # print(self.flag)
         # if (msg['payload']['result'] == m_utils.wakeup_word):
         #     self.__flag = False
         #     print("Wake up")
