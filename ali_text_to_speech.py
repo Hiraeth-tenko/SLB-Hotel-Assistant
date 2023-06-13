@@ -2,6 +2,7 @@ import nls
 import time
 import threading
 import sys
+import aliyun_utils
 
 # print("ACCESS_TOKEN: {}, ACCESS_APPKEY: {}".format(m_utils.ACCESS_TOKEN, m_utils.ACCESS_APPKEY))
 
@@ -42,9 +43,9 @@ class Tts:
     def run(self):
         print("thread:{} start..".format(self.__id))
         tts = nls.NlsSpeechSynthesizer(
-            url="wss://nls-gateway.cn-shanghai.aliyuncs.com/ws/v1",
-            token="6b5f4f2c3fc74075a8b5fba8941f9ba9",
-            appkey="UINMrTV12F26cfIM",
+            url=aliyun_utils.URL,
+            token=aliyun_utils.ACCESS_TOKEN,
+            appkey=aliyun_utils.ACCESS_APPKEY,
             on_metainfo=self.on_metainfo,
             on_data=self.on_data,
             on_completed=self.on_completed,

@@ -2,7 +2,7 @@ import time
 import threading
 import sys
 import json
-
+import aliyun_utils
 import nls
 
 
@@ -51,9 +51,9 @@ class Sr:
         # print("thread:{} start..".format(self.__id))
 
         sr = nls.NlsSpeechRecognizer(
-            url="wss://nls-gateway.cn-shanghai.aliyuncs.com/ws/v1",
-            token="6b5f4f2c3fc74075a8b5fba8941f9ba9",
-            appkey="UINMrTV12F26cfIM",
+            url=aliyun_utils.URL,
+            token=aliyun_utils.ACCESS_TOKEN,
+            appkey=aliyun_utils.ACCESS_APPKEY,
             on_start=self._on_start,
             on_result_changed=self._on_result_chg,
             on_completed=self._on_completed,
