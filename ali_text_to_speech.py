@@ -3,6 +3,7 @@ import time
 import threading
 import sys
 import aliyun_utils
+import proj_utils
 
 # print("ACCESS_TOKEN: {}, ACCESS_APPKEY: {}".format(m_utils.ACCESS_TOKEN, m_utils.ACCESS_APPKEY))
 
@@ -63,7 +64,7 @@ class Tts:
 
 def generate(text):
     # t = Tts(tid="generate wav file", file=m_utils.tts_filepath)
-    t = Tts(tid="generate wav file", file="tmp.wav")
+    t = Tts(tid="generate wav file", file=proj_utils.TTS_WAV_FILEPATH)
     t.start(text)
 
 
