@@ -4,7 +4,7 @@ import json
 
 def weather_reporter(text):
     
-    cityName = '集美区'
+    cityName = '翔安区'
     
     wr = weather_reporter.weatherReporter(filepath=proj_utils.WEATHER_CSV_FILEPATH)
     cc = wr.getCityCode(cityName)['adcode']
