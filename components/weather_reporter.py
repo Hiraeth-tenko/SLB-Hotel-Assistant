@@ -1,6 +1,8 @@
 import pandas
 import requests
 import random
+import wave
+import pyaudio
 import playsound
 import aliyun_utils
 import proj_utils
@@ -64,3 +66,21 @@ class weatherReporter:
     
     def play(self):
         playsound.playsound(proj_utils.WEATHER_TTS_WAV_FILEPATH)
+        # wf = wave.open(proj_utils.WEATHER_TTS_WAV_FILEPATH, 'rb')
+        # p = pyaudio.PyAudio()
+        # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+        #                 channels=wf.getnchannels(), 
+        #                 rate=wf.getframerate(),
+        #                 output=True)
+        
+        # data = wf.readframes(1024)
+        
+        # while data != b'':
+        #     stream.write(data)
+        #     data = wf.readframes(data)
+            
+        # stream.stop_stream()
+        # stream.close()
+        
+        # p.terminate()
+        
