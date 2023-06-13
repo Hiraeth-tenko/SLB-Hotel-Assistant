@@ -1,9 +1,5 @@
 import pandas
 import requests
-import random
-import wave
-import pyaudio
-import playsound
 import aliyun_utils
 import proj_utils
 # import SR
@@ -42,6 +38,7 @@ class weatherReporter:
         return r
 
     def weather_generate(self, province, city, weather, temperature, winddirection, windpower, humidity):
+        import random
         formats = [
             "今天{province}省{city}的天气{weather}，气温{temperature}度，风向{winddirection}，风力{windpower}级，湿度{humidity}%。",
             "现在是{province}省{city}，天气{weather}，气温{temperature}度，风向{winddirection}，风力{windpower}，湿度{humidity}%。",
@@ -65,22 +62,7 @@ class weatherReporter:
         return "为您播报当前地区天气，"+forecast
     
     def play(self):
-        playsound.playsound(proj_utils.WEATHER_TTS_WAV_FILEPATH)
-        # wf = wave.open(proj_utils.WEATHER_TTS_WAV_FILEPATH, 'rb')
-        # p = pyaudio.PyAudio()
-        # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-        #                 channels=wf.getnchannels(), 
-        #                 rate=wf.getframerate(),
-        #                 output=True)
-        
-        # data = wf.readframes(1024)
-        
-        # while data != b'':
-        #     stream.write(data)
-        #     data = wf.readframes(data)
-            
-        # stream.stop_stream()
-        # stream.close()
-        
-        # p.terminate()
-        
+        from pydub import AudioSegment
+        from pydub.playback import play
+        sound = AudioSegment.from_wav(proj_utils.WEATHER_TTS_WAV_FILEPATH)
+        play(sound)
