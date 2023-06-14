@@ -6,4 +6,10 @@ WEATHER_CSV_FILEPATH = "assert/weather/citycode.csv"
 WEATHER_TTS_WAV_FILEPATH = "assert/weather/tts.wav"
 
 WINE_CSV_FILEPATH = "assert/hotel/wine.csv"
-WINE_TTS_WAV_FILEPATH = "assert/hotel/tts.wav"
+WINE_TTS_WAV_FILEPATH = "assert/hotel/wine_tts.wav"
+
+ENTERTAINMENT_CSV_FILEPATH = "assert/hotel/entertainment.csv"
+ENTERTAINMENT_TTS_WAV_FILEPATH = "assert/hotel/entertainment_tts.wav"
+
+RECE_CSV_FILEPATH = "assert/hotel/rece.csv"
+RECE_TTS_WAV_FILEPATH = "assert/hotel/rece_tts.wav"

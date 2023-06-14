@@ -7,8 +7,8 @@ from components import TTS, textsmart
 
 
 class wineWaiter:
-    def __init__(self, filepath) -> None:
-        self.wine_list = pandas.read_csv(filepath, header=0)
+    def __init__(self) -> None:
+        self.wine_list = pandas.read_csv(proj_utils.WINE_CSV_FILEPATH, header=0)
         self.wine_name_list = np.append(self.wine_list.loc[:, ['winename']].values, 
                                         ["甜心","水银","月光","火星"])
         self.wine_list.set_index('winename', inplace=True)
@@ -66,7 +66,7 @@ class wineWaiter:
     
     def wine_find(self, text):
         wine_name = ""
-        content = textsmart.textsmart(text)
+        content = textsmart.recognize(text)
         for item in content['phrase_list']:
             # print(item['str'], end=', ')
             if item['str'] in self.wine_name_list:
@@ -78,9 +78,6 @@ class wineWaiter:
                 if item['str'] in self.wine_name_list:
                     wine_name = item['str']
                     break
-        if wine_name == "":
-            self.wine_error()
-        else:
-            wine_name = self.wine_name_update(wine_name)
-            # print(wine_name)
+        wine_name = self.wine_name_update(wine_name)
+        # print(wine_name)
         return wine_name

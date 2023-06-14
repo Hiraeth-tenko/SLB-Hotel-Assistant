@@ -20,7 +20,7 @@ def wine_name_update(wine_name):
 
 def wine_proc(text):
     wine_name = ""
-    content = textsmart.textsmart(text)
+    content = textsmart.recognize(text)
     for item in content['phrase_list']:
         # print(item['str'], end=', ')
         if item['str'] in wine_name_list:

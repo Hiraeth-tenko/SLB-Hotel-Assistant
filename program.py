@@ -1,4 +1,4 @@
-from components import weather_reporter, wine_waiter, textsmart
+from components import weather_reporter, wine_waiter, entertainment
 import proj_utils
 import json
 import pandas
@@ -21,13 +21,19 @@ def func_weather_reporter(text):
     wr.tts(text)
     # wr.play()
     print(text)
-    
+
+# 回复酒水列表
+
+# 回复娱乐设施列表
+
 def func_wine_introduce(text):
-    ww = wine_waiter.wineWaiter(filepath=proj_utils.WINE_CSV_FILEPATH)
+    ww = wine_waiter.wineWaiter()
     wn = ww.wine_find(text)
     if wn == "":
-        ww.tts("无法识别出酒水的名称，请重试。")
-        ww.play
+        text = "无法识别出酒水的名称，请重试。"
+        print(text)
+        ww.tts(text)
+        # ww.play()
     else:
         wi = ww.getWine(wn).to_dict()
         # print(wi)
@@ -40,3 +46,17 @@ def func_wine_introduce(text):
         print(text)
         ww.tts(text)
         # ww.play()
+
+def func_ertertianment_introduce(text):
+    # text 介绍一下酒店的 xxx （景点）
+    et = entertainment.entertainmentWaiter()
+    area = et.diff(text)
+    # print(area)
+    if area == et.error:
+        text = "无法识别出娱乐设施，请重试"
+        print(text)
+        et.tts(text)
+    else:
+        text = et.entertainment_introduction_generate(area)
+        print(text)
+        
