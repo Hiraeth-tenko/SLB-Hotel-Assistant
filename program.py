@@ -2,9 +2,9 @@ from components import weather_reporter, wine_waiter
 import proj_utils
 import json
 
-def func_weather_reporter(text):
+def func_func_weather_reporter(text):
     
-    cityName = '集美区'
+    cityName = '翔安区'
     
     wr = weather_reporter.weatherReporter(filepath=proj_utils.WEATHER_CSV_FILEPATH)
     cc = wr.getCityCode(cityName)['adcode']
@@ -19,7 +19,7 @@ def func_weather_reporter(text):
                         content['humidity'])
     wr.tts(text)
     # wr.play()
-    # print(text)
+    print(text)
     
 def wine_introduce(text):
     
