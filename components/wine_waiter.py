@@ -2,14 +2,16 @@ import pandas
 import requests
 import aliyun_utils
 import proj_utils
-from components import TTS
+import numpy as np
+from components import TTS, textsmart
 
 
 class wineWaiter:
     def __init__(self, filepath) -> None:
-        self.df = pandas.read_csv(filepath, header=0)
-        self.df.set_index('winename', inplace=True)
-        # print(self.df.head(5))
+        self.wine_list = pandas.read_csv(filepath, header=0)
+        self.wine_name_list = np.append(self.wine_list.loc[:, ['winename']].values, 
+                                        ["甜心","水银","月光","火星"])
+        self.wine_list.set_index('winename', inplace=True)
 
     def sr(self, filepath):
         pass
@@ -27,7 +29,7 @@ class wineWaiter:
         play(sound)
 
     def getWine(self, wineName):
-        wineInfo = self.df[self.df.index == wineName]
+        wineInfo = self.wine_list[self.wine_list.index == wineName]
         return wineInfo
     
     def wine_introduction_generate(self, name, tag1, tag2, tag3, price):
@@ -50,3 +52,35 @@ class wineWaiter:
         )
         
         return "您好，这是饮品介绍。"+introduction
+    
+    def wine_name_update(self, wine_name):
+        if wine_name == "甜心":
+            return "甜心冲击"
+        if wine_name == "水银":
+            return "水银爆炸"
+        if wine_name == "月光":
+            return "月光爆裂"
+        if wine_name == "火星":
+            return "火星爆破"
+        return wine_name
+    
+    def wine_find(self, text):
+        wine_name = ""
+        content = textsmart.textsmart(text)
+        for item in content['phrase_list']:
+            # print(item['str'], end=', ')
+            if item['str'] in self.wine_name_list:
+                wine_name = item['str']
+                break
+        if wine_name == "":
+            for item in content['phrase_list']:
+                # print(item['str'], end=', ')
+                if item['str'] in self.wine_name_list:
+                    wine_name = item['str']
+                    break
+        if wine_name == "":
+            self.wine_error()
+        else:
+            wine_name = self.wine_name_update(wine_name)
+            # print(wine_name)
+        return wine_name
