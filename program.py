@@ -2,7 +2,7 @@ from components import weather_reporter
 import proj_utils
 import json
 
-def weather_reporter(text):
+def func_weather_reporter(text):
     
     cityName = '翔安区'
     
@@ -19,4 +19,4 @@ def weather_reporter(text):
                         content['humidity'])
     wr.tts(text)
     # wr.play()
-    # print(text)
+    print(text)

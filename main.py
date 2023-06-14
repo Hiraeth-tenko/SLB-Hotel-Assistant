@@ -5,7 +5,7 @@ from components.TTS import Tts
 from flask import Flask, request
 import re
 import proj_utils
-from program import weather_reporter
+from program import func_weather_reporter
 
 app = Flask(__name__)
 
@@ -24,9 +24,9 @@ def stt():
         wav2pcm(src_path=proj_utils.RHASSPY_RECV_WAV_FILEPATH,
                 des_path=proj_utils.RHASSPY_RECV_PCM_FILEPATH)
         
-        t = Sr(tid="main.py sr", file=proj_utils.RHASSPY_RECV_PCM_FILEPATH).start()
-        while(t.flag == False):
-            pass
+        t = Sr(tid="main.py sr", file=proj_utils.RHASSPY_RECV_PCM_FILEPATH)
+        t.start()
+        t.wait()
         order = t.msg['payload']['result']
         dispatch(order)
 
@@ -43,7 +43,7 @@ def dispatch(order):
     pattern = r'(?=.*查询)(?=.*天气)'
     matches = re.findall(pattern, order)
     if matches:
-        weather_reporter(order)
+        func_weather_reporter(order)
     else:
         print('未找到匹配')
 
