@@ -4,3 +4,6 @@ RHASSPY_RECV_PCM_FILEPATH = "rhasspy.pcm"
 
 WEATHER_CSV_FILEPATH = "assert/weather/citycode.csv"
 WEATHER_TTS_WAV_FILEPATH = "assert/weather/tts.wav"
+
+WINE_CSV_FILEPATH = "assert/hotel/wine.csv"
+WINE_TTS_WAV_FILEPATH = "assert/hotel/tts.wav"

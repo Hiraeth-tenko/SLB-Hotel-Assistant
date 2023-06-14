@@ -23,9 +23,7 @@ def get_order():
         
         t = SR.Sr(tid="main.py sr", file=proj_utils.RHASSPY_RECV_PCM_FILEPATH)
         t.start()
-        while(t.flag == False):
-            pass
-        print(t.msg)
+        t.wait()
         
         
 

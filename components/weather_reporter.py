@@ -2,8 +2,6 @@ import pandas
 import requests
 import aliyun_utils
 import proj_utils
-# import SR
-# import TTS
 from components import TTS
 
 
@@ -23,8 +21,8 @@ class weatherReporter:
         t.wait()
 
     def getCityCode(self, cityName):
-        citycode = self.df[self.df.index == cityName]
-        return citycode
+        cityInfo = self.df[self.df.index == cityName]
+        return cityInfo
 
     def getWeatherBycityCode(self, cityCode):
         payload = {
