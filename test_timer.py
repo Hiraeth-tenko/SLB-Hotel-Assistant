@@ -1,3 +1,4 @@
+import datetime
 import re
 from components import timer
 def text_to_time(text):
@@ -20,7 +21,28 @@ def text_to_time(text):
                 minute = 0
         return f'{hour:02d}:{minute:02d}'
     else:
-        return '无法识别时间'
+        now = datetime.datetime.now()
+        times_match = re.search(r'(小时)', text)
+        hours=0
+        if times_match:
+            hours = int(chinese_to_arabic(re.search(r'(\S+)(?=小时)', text).group()))
+        if(hours!=0):
+            minutes = re.search(r'((?<=小时)\S+)?(?=分)', text)
+            if minutes:
+                minute = int(chinese_to_arabic(minutes.group()))
+            else:
+                minute = 0
+        else:
+            minutes = re.search(r'(\S+)(?=分钟)', text)
+            if minutes:
+                minute = int(chinese_to_arabic(minutes.group()))
+            else:
+                minute = 0
+        time_delta = datetime.timedelta(hours=hours, minutes=minute)
+        new_time = now + time_delta
+        new_hours = new_time.hour
+        new_minutes = new_time.minute
+        return f'{new_hours:02d}:{new_minutes:02d}'
 def chinese_to_arabic(text):
     num_dict = {'零': 0, '一': 1, '二': 2, '两': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9, "十": 10}
     result = 0
@@ -53,10 +75,14 @@ def test_time(atime):
         i=0
         while(i<3):
             tr.play()
-            print(text2)
+            #print(text2)
             i=i+1
         i==0
 def test(text):
     t=text_to_time(text)
+    #print(t)
     test_time(t)
 
+###t="早上十点十分"
+#t1="一小时二十分钟"
+#test(t1)
