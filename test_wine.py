@@ -16,4 +16,4 @@ import json
 # ww.tts(text)
 # ww.play()
 import program
-program.func_wine_introduce('给我介绍一下月光爆裂')
+program.func_wine_introduce('给我介绍一下甜心冲击')
