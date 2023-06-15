@@ -2,8 +2,14 @@ from playsound import playsound
 import random
 
 key_value_pairs = {
-    '0': '../倔强.mp3',
-    '1': '../温柔.mp3',
+    '0': '../assert\\music\\倔强.mp3',
+    '1': '../assert\\music\\温柔.mp3',
+    '2': '../assert\\music\\可能.mp3',
+    '3': '../assert\\music\\预言.mp3',
+    '4': '../assert\\music\\妈妈的话.mp3',
+    '5': '../assert\\music\\我走后.mp3',
+    '6': '../assert\\music\\可乐.mp3',
+    '7': '../assert\\music\\凄美地.mp3',
 }
 
 # 生成一个随机数
