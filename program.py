@@ -26,14 +26,14 @@ def func_weather_reporter(text):
 
 # 回复娱乐设施列表
 
-def func_wine_introduce(text):
+def func_wine_introduce(text) -> bool:
     ww = wine_waiter.wineWaiter()
     wn = ww.wine_find(text)
     if wn == "":
         text = "无法识别出酒水的名称，请重试。"
         print(text)
         ww.tts(text)
-        # ww.play()
+        return False
     else:
         wi = ww.getWine(wn).to_dict()
         # print(wi)
@@ -45,9 +45,9 @@ def func_wine_introduce(text):
                                             )
         print(text)
         ww.tts(text)
-        # ww.play()
+        return True
 
-def func_ertertianment_introduce(text):
+def func_ertertianment_introduce(text) -> bool:
     # text 介绍一下酒店的 xxx （景点）
     et = entertainment.entertainmentWaiter()
     area = et.diff(text)
@@ -56,7 +56,10 @@ def func_ertertianment_introduce(text):
         text = "无法识别出娱乐设施，请重试"
         print(text)
         et.tts(text)
+        return False
     else:
         text = et.entertainment_introduction_generate(area)
         print(text)
+        et.tts(text)
+        return True
         
