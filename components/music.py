@@ -28,6 +28,6 @@ def play_music(command):
 
 # 主程序传入指令
 
-command = input()
+#command = input()
 
-play_music(command)
+#play_music(command)
