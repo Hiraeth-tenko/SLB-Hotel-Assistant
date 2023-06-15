@@ -29,6 +29,7 @@ class wineWaiter:
         play(sound)
 
     def getWine(self, wineName):
+        # 酒水名在列表中
         wineInfo = self.wine_list[self.wine_list.index == wineName]
         return wineInfo
     
@@ -67,17 +68,18 @@ class wineWaiter:
     def wine_find(self, text):
         wine_name = ""
         content = textsmart.recognize(text)
+        print(content)
         for item in content['phrase_list']:
             # print(item['str'], end=', ')
             if item['str'] in self.wine_name_list:
                 wine_name = item['str']
                 break
-        if wine_name == "":
-            for item in content['phrase_list']:
-                # print(item['str'], end=', ')
-                if item['str'] in self.wine_name_list:
-                    wine_name = item['str']
-                    break
+        # if wine_name == "":
+        #     for item in content['phrase_list']:
+        #         # print(item['str'], end=', ')
+        #         if item['str'] in self.wine_name_list:
+        #             wine_name = item['str']
+        #             break
         wine_name = self.wine_name_update(wine_name)
         # print(wine_name)
         return wine_name
