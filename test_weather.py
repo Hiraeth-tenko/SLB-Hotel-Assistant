@@ -15,5 +15,5 @@ text = wr.weather_generate(content['province'],
                      content['humidity'])
 wr.tts(text)
 wr.play()
-# print(text)
+#print(text)
 
