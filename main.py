@@ -73,6 +73,7 @@ def dispatch(order):
     # 查询天气
     if re.match(patterns[0], order):
         func_weather_reporter(order)
+        subprocess.run(["aplay", proj_utils.WEATHER_TTS_WAV_FILEPATH])
         return True
 
     # 介绍娱乐设施或酒水
