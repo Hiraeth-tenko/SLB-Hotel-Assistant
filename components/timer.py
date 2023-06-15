@@ -1,4 +1,6 @@
 import datetime
+import subprocess
+
 import proj_utils
 import playsound
 import threading
@@ -23,5 +25,9 @@ class timers:
                 return current_time >= self.alarm_time.time()
                 break
     def play(self):
-        playsound.playsound(proj_utils.TIMER_TTS_WAV_FILEPATH)
+        play_wav_file(proj_utils.TIMER_TTS_WAV_FILEPATH)
 
+
+def play_wav_file(file_path):
+    # 使用aplay命令播放wav文件
+    subprocess.run(["aplay", file_path])

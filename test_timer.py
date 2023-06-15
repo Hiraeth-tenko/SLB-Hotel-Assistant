@@ -70,7 +70,7 @@ def test_time(atime):
     tr =timer.timers()
     tr.set_alarm(atime)
     if tr.alarm_triggered():
-        text2="时间到了该醒了朋友"
+        text2= "时间到了该醒了朋友"
         tr.tts(text2)
         i=0
         while(i<3):
@@ -78,6 +78,7 @@ def test_time(atime):
             #print(text2)
             i=i+1
         i==0
+
 def test(text):
     t=text_to_time(text)
     #print(t)

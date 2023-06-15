@@ -81,6 +81,7 @@ def dispatch(order):
         thread = threading.Thread(target=thread_function(time))
         # 启动子线程
         thread.start()
+
         return True
     else:
         sentence = "抱歉，我没有听清楚您说的话,能否再说一遍？"
