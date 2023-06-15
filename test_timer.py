@@ -83,6 +83,6 @@ def test(text):
     #print(t)
     test_time(t)
 
-##t="早上十点十分"
+###t="早上十点十分"
 #t1="一小时二十分钟"
 #test(t1)
