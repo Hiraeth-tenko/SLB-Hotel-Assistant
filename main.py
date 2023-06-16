@@ -108,11 +108,12 @@ def dispatch(order):
         return True
 
     elif re.match(patterns[5], order):
-        play_music(order)
+        music = play_music(order)
+        play_wav_file(music)
         return True
 
     else:
-        sentence = "抱歉，我没有听清楚您说的话,能否再说一遍？"
+        sentence = "抱歉，我没有听清,能否再说一遍？"
         Tts('start text to speech', file=proj_utils.TTS_WAV_FILEPATH).start(sentence)
         play_wav_file(proj_utils.TTS_WAV_FILEPATH)
         return False
