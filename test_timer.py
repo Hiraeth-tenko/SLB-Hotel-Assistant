@@ -73,14 +73,18 @@ def test_time(atime):
         text2= "时间到了该醒了朋友"
         tr.tts(text2)
         i=0
-        while(i<3):
+        while(i<2):
             tr.play()
-            #print(text2)
+            print(text2)
             i=i+1
         i==0
 
 def test(text):
+    a = timer.timers()
     t=text_to_time(text)
+    text1 = "好的收到"
+    a.tts(text1)
+    a.play()
     #print(t)
     test_time(t)
 

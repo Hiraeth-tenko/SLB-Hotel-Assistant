@@ -120,7 +120,7 @@ def dispatch(order):
 
 def play_wav_file(file_path):
     # 使用aplay命令播放wav文件
-    subprocess.run(["aplay", file_path])
+    subprocess.run(["aplay", "-D", "plughw:1,0", file_path])
 
 
 def thread_function(time):
